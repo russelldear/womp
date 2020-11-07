@@ -33,5 +33,6 @@ jobs:
       run: |
         git config --global user.name 'Russell Dear'
         git config --global user.email 'russell.dear@gmail.com'
+        git add .
         git commit -am "Github Action - automated build"
         git push
