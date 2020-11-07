@@ -31,5 +31,7 @@ jobs:
     - run: npm run build
     - name: Commit built app
       run: |
+        git config --global user.name 'Russell Dear'
+        git config --global user.email 'russell.dear@gmail.com'
         git commit -am "Github Action - automated build"
         git push
