@@ -1,3 +1,37 @@
-.App {
+body {
+  background-color: black;
+  color: white;
+}
+
+.app {
   text-align: center;
+}
+
+.app img {
+  width: 500px;
+  height: 500px;
+}
+
+.link-container {
+  width: 200px;
+  margin: 50px auto 25px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.link {
+  flex: none;
+  width: 30px;
+}
+
+.link:first-child {
+  margin-right: 35px;
+}
+
+.link:last-child {
+  margin-left: 35px;
+}
+
+svg {
+  fill: #ffffff;
 }
