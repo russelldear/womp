@@ -20,7 +20,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
-    - run: PUBLIC_URL=http://guid.nz/womp npm run build
+    - name: Build
+      run: npm run build
+      env:
+        PUBLIC_URL=http://guid.nz/womp
     - name: Move built app
       run: |
         mv build docs
