@@ -37,4 +37,5 @@ run:
         git commit -am "Github Action - automated build"
         git push
     - name: Move built app
-      run: mv build docs
+      run: |
+        mv build docs
