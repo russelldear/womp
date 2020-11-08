@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "http://guid.nz/womp/static/css/main.106baaae.chunk.css",
-    "main.js": "http://guid.nz/womp/static/js/main.845d10fc.chunk.js",
-    "main.js.map": "http://guid.nz/womp/static/js/main.845d10fc.chunk.js.map",
+    "main.css": "http://guid.nz/womp/static/css/main.2261ff2a.chunk.css",
+    "main.js": "http://guid.nz/womp/static/js/main.3ca4cc2b.chunk.js",
+    "main.js.map": "http://guid.nz/womp/static/js/main.3ca4cc2b.chunk.js.map",
     "runtime-main.js": "http://guid.nz/womp/static/js/runtime-main.46aeebb9.js",
     "runtime-main.js.map": "http://guid.nz/womp/static/js/runtime-main.46aeebb9.js.map",
-    "static/js/2.2f10b01c.chunk.js": "http://guid.nz/womp/static/js/2.2f10b01c.chunk.js",
-    "static/js/2.2f10b01c.chunk.js.map": "http://guid.nz/womp/static/js/2.2f10b01c.chunk.js.map",
+    "static/js/2.083aa259.chunk.js": "http://guid.nz/womp/static/js/2.083aa259.chunk.js",
+    "static/js/2.083aa259.chunk.js.map": "http://guid.nz/womp/static/js/2.083aa259.chunk.js.map",
     "index.html": "http://guid.nz/womp/index.html",
-    "static/css/main.106baaae.chunk.css.map": "http://guid.nz/womp/static/css/main.106baaae.chunk.css.map",
-    "static/js/2.2f10b01c.chunk.js.LICENSE.txt": "http://guid.nz/womp/static/js/2.2f10b01c.chunk.js.LICENSE.txt"
+    "static/css/main.2261ff2a.chunk.css.map": "http://guid.nz/womp/static/css/main.2261ff2a.chunk.css.map",
+    "static/js/2.083aa259.chunk.js.LICENSE.txt": "http://guid.nz/womp/static/js/2.083aa259.chunk.js.LICENSE.txt",
+    "static/media/rdlamp.1498208a.jpg": "http://guid.nz/womp/static/media/rdlamp.1498208a.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.46aeebb9.js",
-    "static/js/2.2f10b01c.chunk.js",
-    "static/css/main.106baaae.chunk.css",
-    "static/js/main.845d10fc.chunk.js"
+    "static/js/2.083aa259.chunk.js",
+    "static/css/main.2261ff2a.chunk.css",
+    "static/js/main.3ca4cc2b.chunk.js"
   ]
 }
