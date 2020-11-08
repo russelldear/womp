@@ -23,7 +23,7 @@ jobs:
     - name: Build
       run: npm run build
       env:
-        PUBLIC_URL=http://guid.nz/womp
+        PUBLIC_URL: http://guid.nz/womp
     - name: Move built app
       run: |
         mv build docs
