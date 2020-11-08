@@ -21,6 +21,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run build
+    - name: Move built app
+      run: |
+        mv build docs
     - name: Commit built app
       run: |
         git config --global user.name 'Russell Dear'
@@ -28,6 +31,3 @@ jobs:
         git add .
         git commit -am "Github Action - automated build"
         git push
-    - name: Move built app
-      run: |
-        mv build docs
