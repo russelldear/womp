@@ -20,7 +20,7 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
-
+run: 
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -36,3 +36,5 @@ jobs:
         git add .
         git commit -am "Github Action - automated build"
         git push
+    - name: Move built app
+      run: mv build docs
