@@ -21,7 +21,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Identify
       run: |
-        cd public/images
+        ls
+        cd /public/images
         > imageManifest.txt
 
         for filename in *.jpg; do
