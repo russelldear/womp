@@ -4,5 +4,5 @@ cd public/images
 
 for filename in *.jpg; do
     dimensions = identify -format '%w %h' $filename
-    echo "$filename" + " " + $dimensions >> imageManifest.txt
+    echo "$filename $dimensions" >> imageManifest.txt
 done    
