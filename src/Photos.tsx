@@ -15,11 +15,16 @@ function Photos() {
     fetch('/images/imageManifest.txt')
         .then((response) => response.text())
         .then((response) => {
-          const imageNames = response.split(/\r?\n/);
-          for (let i = 0; i < imageNames.length; i++) {
-            const imageName = imageNames[i];
+          const imageDetails = response.split(/\r?\n/);
+          for (let i = 0; i < imageDetails.length; i++) {
+            const imageDetail = imageDetails[i].split(" ");
+            const imageName = imageDetail[0];
             if (imageName !== "imageManifest.txt") {
-              photos.push({ src: `/images/${imageName}`, width: 1, height: 1})
+              photos.push({ 
+                src: `/images/${imageName}`, 
+                width: parseInt(imageDetail[1]), 
+                height: parseInt(imageDetail[2])
+              })
             }
           }
 
