@@ -22,9 +22,10 @@ jobs:
     - name: Identify
       run: |
         ls
-        cd /public/images
+        cd public
+        ls
+        cd images
         > imageManifest.txt
-
         for filename in *.jpg; do
             $filename >> imageManifest.txt
             identify -format '%w %h' $filename
