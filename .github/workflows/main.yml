@@ -21,11 +21,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Identify
       run: |
+        cd public/images
         > imageManifest.txt
-        for filename in public/images/*.jpg; do
+
+        for filename in *.jpg; do
             $filename >> imageManifest.txt
             identify -format '%w %h' $filename
-        done
+        done 
     - name: Install packages
       run: npm install
     - name: Build
