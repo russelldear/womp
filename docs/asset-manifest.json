@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "https://russellde.ar/static/css/main.bb810968.chunk.css",
-    "main.js": "https://russellde.ar/static/js/main.3ca4cc2b.chunk.js",
-    "main.js.map": "https://russellde.ar/static/js/main.3ca4cc2b.chunk.js.map",
+    "main.js": "https://russellde.ar/static/js/main.53486768.chunk.js",
+    "main.js.map": "https://russellde.ar/static/js/main.53486768.chunk.js.map",
     "runtime-main.js": "https://russellde.ar/static/js/runtime-main.b9592395.js",
     "runtime-main.js.map": "https://russellde.ar/static/js/runtime-main.b9592395.js.map",
-    "static/js/2.083aa259.chunk.js": "https://russellde.ar/static/js/2.083aa259.chunk.js",
-    "static/js/2.083aa259.chunk.js.map": "https://russellde.ar/static/js/2.083aa259.chunk.js.map",
+    "static/js/2.98f6185e.chunk.js": "https://russellde.ar/static/js/2.98f6185e.chunk.js",
+    "static/js/2.98f6185e.chunk.js.map": "https://russellde.ar/static/js/2.98f6185e.chunk.js.map",
     "index.html": "https://russellde.ar/index.html",
     "static/css/main.bb810968.chunk.css.map": "https://russellde.ar/static/css/main.bb810968.chunk.css.map",
-    "static/js/2.083aa259.chunk.js.LICENSE.txt": "https://russellde.ar/static/js/2.083aa259.chunk.js.LICENSE.txt",
+    "static/js/2.98f6185e.chunk.js.LICENSE.txt": "https://russellde.ar/static/js/2.98f6185e.chunk.js.LICENSE.txt",
     "static/media/rdlamp.1498208a.jpg": "https://russellde.ar/static/media/rdlamp.1498208a.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.b9592395.js",
-    "static/js/2.083aa259.chunk.js",
+    "static/js/2.98f6185e.chunk.js",
     "static/css/main.bb810968.chunk.css",
-    "static/js/main.3ca4cc2b.chunk.js"
+    "static/js/main.53486768.chunk.js"
   ]
 }
