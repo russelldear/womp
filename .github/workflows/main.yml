@@ -19,7 +19,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
+    - name: file
+      run: file /src/rdlamp.jpg
+    - name: Install packages
+      run: npm install
     - name: Build
       run: npm run build
       env:
