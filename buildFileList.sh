@@ -3,6 +3,6 @@ cd public/images
 > imageManifest.txt
 
 for filename in *.jpg; do
-    dimensions = identify -format '%w %h' $filename
-    echo "$filename $dimensions" >> imageManifest.txt
+    DIMS=$(identify -format '%w %h' $filename)
+    echo "$filename $DIMS" >> imageManifest.txt
 done    
