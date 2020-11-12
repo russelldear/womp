@@ -20,7 +20,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: file
-      run: file /src/rdlamp.jpg
+      run: file src/rdlamp.jpg
     - name: Install packages
       run: npm install
     - name: Build
