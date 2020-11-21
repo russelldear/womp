@@ -18,14 +18,11 @@ function Photos() {
           const imageDetails = response.split(/\r?\n/);
           for (let i = 0; i < imageDetails.length; i++) {
             const imageDetail = imageDetails[i].split(" ");
-            const imageName = imageDetail[0];
-            if (imageName !== "imageManifest.txt") {
-              photos.push({ 
-                src: `/images/${imageName}`, 
-                width: parseInt(imageDetail[1]), 
-                height: parseInt(imageDetail[2])
-              })
-            }
+            photos.push({ 
+              src: `/images/${imageDetail[0]}`, 
+              width: parseInt(imageDetail[1]), 
+              height: parseInt(imageDetail[2])
+            });
           }
 
           console.log(photos);
