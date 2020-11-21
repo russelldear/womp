@@ -18,6 +18,20 @@ function Photos() {
     setViewerIsOpen(false);
   };
 
+  const shufflePhotos = (photoArray: IPhoto[]) => {
+    var currentIndex = photoArray.length, temporaryValue, randomIndex;
+
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = photoArray[currentIndex];
+      photoArray[currentIndex] = photoArray[randomIndex];
+      photoArray[randomIndex] = temporaryValue;
+    }
+
+    return photoArray;
+  }
+
   if (photos.length === 0) {
     const photos: IPhoto[] = [];
     fetch('/images/imageManifest.txt')
@@ -36,7 +50,7 @@ function Photos() {
         }
 
         console.log(photos);
-        setPhotos(photos);
+        setPhotos(shufflePhotos(photos));
       });
   }
 
