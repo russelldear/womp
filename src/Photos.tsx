@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Gallery from 'react-photo-gallery'
+import Carousel, { Modal, ModalGateway } from "react-images";
 import { IPhoto } from './types'
 import './App.css';
 
 function Photos() {
-  const [xphotos, setPhotos] = useState<IPhoto[]>([]);
+  const [photos, setPhotos] = useState<IPhoto[]>([]); const [currentImage, setCurrentImage] = useState(0);
+  const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
-  if (xphotos.length === 0) {
+  const openLightbox = useCallback((event, { photo, index }) => {
+    setCurrentImage(index);
+    setViewerIsOpen(true);
+  }, []);
+
+  const closeLightbox = () => {
+    setCurrentImage(0);
+    setViewerIsOpen(false);
+  };
+
+  if (photos.length === 0) {
     const photos: IPhoto[] = [];
     fetch('/images/imageManifest.txt')
       .then((response) => response.text())
@@ -30,7 +42,20 @@ function Photos() {
 
   return (
     <div>
-      <Gallery photos={xphotos} />
+      <Gallery photos={photos} onClick={openLightbox} />
+      <ModalGateway>
+        {viewerIsOpen ? (
+          <Modal onClose={closeLightbox}>
+            <Carousel
+              currentIndex={currentImage}
+              views={photos.map(photo => ({
+                ...photo,
+                source: photo.src
+              }))}
+            />
+          </Modal>
+        ) : null}
+      </ModalGateway>
     </div>
   );
 }
