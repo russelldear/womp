@@ -36,3 +36,8 @@ body {
 svg {
   fill: #ffffff;
 }
+
+/* Bug fix for carousel */
+.react-images__view-image {
+  max-height: 100vh !important;
+}
