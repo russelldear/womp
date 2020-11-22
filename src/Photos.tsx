@@ -6,11 +6,24 @@ import PhotoGallery from "./PhotoGallery"
 import './App.css';
 
 const Photos = () => {
+  const [folders, setFolders] = useState<string[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   let { path } = useRouteMatch();
 
   const onSetSidebarOpen = (open: boolean) => {
     setSidebarOpen(open);
+  }
+
+  if (folders.length === 0) {
+    fetch(`/images/imageManifest.txt`)
+      .then((response) => response.text())
+      .then((response) => {
+        const folderNames = response.split(/\r?\n/);
+        setFolders(folderNames);
+      });
+  }
+  else {
+    console.log("got folders");
   }
 
   return (
@@ -24,12 +37,11 @@ const Photos = () => {
               </button>
             </div>
             <div className="menu-item-container">
-              <div className="menu-item">
-                <a href="#/photos/music">music</a>
-              </div>
-              <div className="menu-item">
-                <a href="#/photos/taytay">taytay</a>
-              </div>
+              {
+                folders.map(folder => {
+                  return <div className="menu-item"><a href={`#/photos/${folder}`}>{`${folder}`}</a></div>
+                })
+              }
             </div>
           </div>
         }
@@ -42,8 +54,11 @@ const Photos = () => {
         </button>
       </Sidebar>
       <Switch>
-        <Route path={`${path}/music`} component={() => <PhotoGallery folder="music" />} />
-        <Route path={`${path}/taytay`} component={() => <PhotoGallery folder="taytay" />} />
+        {
+          folders.map(folder => {
+            return <Route path={`${path}/${folder}`} component={() => <PhotoGallery folder={`${folder}`} />} />
+          })
+        }
       </Switch>
     </>
   )

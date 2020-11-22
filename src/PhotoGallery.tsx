@@ -32,9 +32,8 @@ const PhotoGallery: FunctionComponent<{folder: string}> = (props) => {
 
     return photoArray;
   }
-
+  
   if (photos.length === 0) {
-    const photos: IPhoto[] = [];
     fetch(`/images/${props.folder}/imageManifest.txt`)
       .then((response) => response.text())
       .then((response) => {
@@ -50,8 +49,8 @@ const PhotoGallery: FunctionComponent<{folder: string}> = (props) => {
           }
         }
 
-        console.log(photos);
-        setPhotos(shufflePhotos(photos));
+        //console.log(photos);
+        setPhotos(photos);
       });
   }
 
