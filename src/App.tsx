@@ -14,7 +14,7 @@ function App() {
         <Route path="*" component={() => <Landing />} />
       </Switch>
     </HashRouter>
-  );
+  )
 }
 
 export default App;

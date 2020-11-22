@@ -1,77 +1,50 @@
-import React, { useState, useCallback } from 'react';
-import Gallery from 'react-photo-gallery'
-import Carousel, { Modal, ModalGateway } from "react-images";
-import { IPhoto } from './types'
+import React, { useState } from "react";
+import { Route, Switch } from 'react-router';
+import { useRouteMatch } from "react-router-dom";
+import Sidebar from "react-sidebar";
+import PhotoGallery from "./PhotoGallery"
 import './App.css';
 
-function Photos() {
-  const [photos, setPhotos] = useState<IPhoto[]>([]); const [currentImage, setCurrentImage] = useState(0);
-  const [viewerIsOpen, setViewerIsOpen] = useState(false);
+const Photos = () => {
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  let { path } = useRouteMatch();
 
-  const openLightbox = useCallback((event, { photo, index }) => {
-    setCurrentImage(index);
-    setViewerIsOpen(true);
-  }, []);
-
-  const closeLightbox = () => {
-    setCurrentImage(0);
-    setViewerIsOpen(false);
-  };
-
-  const shufflePhotos = (photoArray: IPhoto[]) => {
-    var currentIndex = photoArray.length, temporaryValue, randomIndex;
-
-    while (0 !== currentIndex) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-      temporaryValue = photoArray[currentIndex];
-      photoArray[currentIndex] = photoArray[randomIndex];
-      photoArray[randomIndex] = temporaryValue;
-    }
-
-    return photoArray;
-  }
-
-  if (photos.length === 0) {
-    const photos: IPhoto[] = [];
-    fetch('/images/imageManifest.txt')
-      .then((response) => response.text())
-      .then((response) => {
-        const imageDetails = response.split(/\r?\n/);
-        for (let i = 0; i < imageDetails.length; i++) {
-          const imageDetail = imageDetails[i].split(" ");
-          if (imageDetail[0] && imageDetail[0] !== "/images/") {
-            photos.push({
-              src: `/images/${imageDetail[0]}`,
-              width: parseInt(imageDetail[1]),
-              height: parseInt(imageDetail[2])
-            });
-          }
-        }
-
-        console.log(photos);
-        setPhotos(shufflePhotos(photos));
-      });
+  const onSetSidebarOpen = (open: boolean) => {
+    setSidebarOpen(open);
   }
 
   return (
-    <div>
-      <Gallery photos={photos} onClick={openLightbox} />
-      <ModalGateway>
-        {viewerIsOpen ? (
-          <Modal onClose={closeLightbox}>
-            <Carousel
-              currentIndex={currentImage}
-              views={photos.map(photo => ({
-                ...photo,
-                source: photo.src
-              }))}
-            />
-          </Modal>
-        ) : null}
-      </ModalGateway>
-    </div>
-  );
+    <Sidebar
+      sidebar={
+        <div>
+          <div className="menu-close">
+            <button className="menu-button" onClick={() => onSetSidebarOpen(false)}>
+              <i className="material-icons md-light md-36">keyboard_arrow_left</i>
+            </button>
+          </div>
+          <div className="menu-item-container">
+            <div className="menu-item">
+              <a href="#/photos/music">music</a>
+            </div>
+            <div className="menu-item">
+              <a href="#/photos/taytay">taytay</a>
+            </div>
+          </div>
+        </div>
+      }
+      open={sidebarOpen}
+      onSetOpen={onSetSidebarOpen}
+      styles={{ sidebar: { background: "black" } }}
+    >
+      <button className="menu-button" onClick={() => onSetSidebarOpen(true)}>
+        <i className="material-icons md-light md-36">menu</i>
+      </button>
+      <Switch>
+        <Route path={`${path}/music`} component={() => <PhotoGallery folder="music" />} />
+        <Route path={`${path}/taytay`} component={() => <PhotoGallery folder="taytay" />} />
+      </Switch>
+    </Sidebar>
+  )
 }
 
 export default Photos;

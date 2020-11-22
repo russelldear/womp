@@ -41,3 +41,35 @@ svg {
 .react-images__view-image {
   max-height: 100vh !important;
 }
+.menu-close {
+  font-size: x-large;
+}
+
+.menu-item-container {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  padding: 20px 50px;
+}
+
+.menu-item a {
+  text-decoration: none;
+  color: white;
+}
+
+.menu-button {
+  background-color: black;
+  border: none;
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.material-icons.md-light { 
+  color: rgba(255, 255, 255, 1); 
+}
