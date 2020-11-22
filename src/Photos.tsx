@@ -14,36 +14,38 @@ const Photos = () => {
   }
 
   return (
-    <Sidebar
-      sidebar={
-        <div>
-          <div className="menu-close">
-            <button className="menu-button" onClick={() => onSetSidebarOpen(false)}>
-              <i className="material-icons md-light md-36">keyboard_arrow_left</i>
-            </button>
-          </div>
-          <div className="menu-item-container">
-            <div className="menu-item">
-              <a href="#/photos/music">music</a>
+    <>
+      <Sidebar
+        sidebar={
+          <div>
+            <div className="menu-close">
+              <button className="menu-button" onClick={() => onSetSidebarOpen(false)}>
+                <i className="material-icons md-light md-36">keyboard_arrow_left</i>
+              </button>
             </div>
-            <div className="menu-item">
-              <a href="#/photos/taytay">taytay</a>
+            <div className="menu-item-container">
+              <div className="menu-item">
+                <a href="#/photos/music">music</a>
+              </div>
+              <div className="menu-item">
+                <a href="#/photos/taytay">taytay</a>
+              </div>
             </div>
           </div>
-        </div>
-      }
-      open={sidebarOpen}
-      onSetOpen={onSetSidebarOpen}
-      styles={{ sidebar: { background: "black" } }}
-    >
-      <button className="menu-button" onClick={() => onSetSidebarOpen(true)}>
-        <i className="material-icons md-light md-36">menu</i>
-      </button>
+        }
+        open={sidebarOpen}
+        onSetOpen={onSetSidebarOpen}
+        styles={{ sidebar: { background: "black" } }}
+      >
+        <button className="menu-button" onClick={() => onSetSidebarOpen(true)}>
+          <i className="material-icons md-light md-36">menu</i>
+        </button>
+      </Sidebar>
       <Switch>
         <Route path={`${path}/music`} component={() => <PhotoGallery folder="music" />} />
         <Route path={`${path}/taytay`} component={() => <PhotoGallery folder="taytay" />} />
       </Switch>
-    </Sidebar>
+    </>
   )
 }
 

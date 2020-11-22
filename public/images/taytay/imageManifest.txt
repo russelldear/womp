@@ -1,13 +1,13 @@
-Tay-1.jpg 4000 3000
-Tay-10.jpg 2910 3049
-Tay-11.jpg 3963 2972
-Tay-12.jpg 4000 3000
-Tay-13.jpg 2250 3000
-Tay-2.jpg 3280 2460
-Tay-3.jpg 3588 2691
-Tay-4.jpg 3129 2086
-Tay-5.jpg 4000 3000
-Tay-6.jpg 3571 2678
-Tay-7.jpg 3032 2274
-Tay-8.jpg 2793 2095
-Tay-9.jpg 2884 2163
+Tay-1.jpg 
+Tay-10.jpg 
+Tay-11.jpg 
+Tay-12.jpg 
+Tay-13.jpg 
+Tay-2.jpg 
+Tay-3.jpg 
+Tay-4.jpg 
+Tay-5.jpg 
+Tay-6.jpg 
+Tay-7.jpg 
+Tay-8.jpg 
+Tay-9.jpg 

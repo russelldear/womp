@@ -3,7 +3,7 @@ cd public/images
 > imageManifest.txt
 
 for folder in */ ; do
-    echo "$folder" >> imageManifest.txt
+    echo "${folder%?}" >> imageManifest.txt
     pushd $folder
     > imageManifest.txt 
     for filename in *.jpg; do
