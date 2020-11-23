@@ -4,7 +4,7 @@ cd public/images
 
 for folder in */ ; do
     echo "${folder%?}" >> imageManifest.txt
-    pushd $folder
+    pushd "$folder"
     > imageManifest.txt 
     for filename in *.jpg; do
         DIMS=$(identify -format '%w %h' $filename)
