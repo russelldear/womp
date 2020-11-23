@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Route, Switch } from 'react-router';
-import { useRouteMatch } from "react-router-dom";
+import { useRouteMatch, useHistory } from "react-router-dom";
 import Sidebar from "react-sidebar";
 import PhotoGallery from "./PhotoGallery"
 import './App.css';
@@ -13,6 +13,12 @@ const Photos = () => {
   const onSetSidebarOpen = (open: boolean) => {
     setSidebarOpen(open);
   }
+  const history = useHistory();
+
+  const handleMenuClick = (folder: string) => {
+    onSetSidebarOpen(false)
+    history.push(`/photos/${folder}`);
+  }
 
   if (folders.length === 0) {
     fetch(`/images/imageManifest.txt`)
@@ -21,9 +27,6 @@ const Photos = () => {
         const folderNames = response.split(/\r?\n/);
         setFolders(folderNames);
       });
-  }
-  else {
-    console.log("got folders");
   }
 
   return (
@@ -39,7 +42,11 @@ const Photos = () => {
             <div className="menu-item-container">
               {
                 folders.map(folder => {
-                  return <div className="menu-item"><a href={`#/photos/${folder}`}>{`${folder}`}</a></div>
+                  return (
+                    <div className="menu-item">
+                      <button className="menu-button" onClick={() => handleMenuClick(`${folder}`)}>{`${folder}`}</button>
+                    </div>
+                  )
                 })
               }
             </div>
@@ -52,14 +59,14 @@ const Photos = () => {
         <button className="menu-button" onClick={() => onSetSidebarOpen(true)}>
           <i className="material-icons md-light md-36">menu</i>
         </button>
+        <Switch>
+          {
+            folders.map(folder => {
+              return <Route path={`${path}/${folder}`} component={() => <PhotoGallery folder={`${folder}`} />} />
+            })
+          }
+        </Switch>
       </Sidebar>
-      <Switch>
-        {
-          folders.map(folder => {
-            return <Route path={`${path}/${folder}`} component={() => <PhotoGallery folder={`${folder}`} />} />
-          })
-        }
-      </Switch>
     </>
   )
 }
