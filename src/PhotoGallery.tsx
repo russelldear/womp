@@ -21,7 +21,7 @@ const PhotoGallery: FunctionComponent<{ folder: string }> = (props) => {
     if (!imageFolders || !imageFolders.some(imageFolder => imageFolder.folderName === props.folder)) {
       dispatch(getImageFolder(props.folder));
     }
-  }, [imageFolders, dispatch]);
+  }, [imageFolders, props.folder, dispatch]);
 
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);

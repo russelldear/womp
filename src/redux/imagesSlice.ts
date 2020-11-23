@@ -27,6 +27,6 @@ const images = createSlice({
   }
 });
 
-export const { getImageFolderSuccessful: getImageFolderSuccessful } = images.actions;
+export const { getImageFolderSuccessful } = images.actions;
 
 export default images.reducer;
