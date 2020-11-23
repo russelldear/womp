@@ -1,4 +1,4 @@
-*.jpg 
+down south
 music
 niue
 nyc
