@@ -10,7 +10,7 @@ import store from './redux/store';
 function App() {
   return (
     <Provider store={store}>
-      <HashRouter basename={process.env.PUBLIC_URL}>
+      <HashRouter basename="/">
         <Switch>
           <Route exact path="/" component={() => <Landing />} />
           <Route path="/photos" component={() => <Photos />} />
