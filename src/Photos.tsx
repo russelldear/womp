@@ -1,14 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch } from 'react-router';
 import { useRouteMatch, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { AppState } from './redux/rootReducer';
 import Sidebar from "react-sidebar";
+import { getImageFolder as getImageFolders } from './redux/imagesActions';
 import PhotoGallery from "./PhotoGallery"
 import './App.css';
 
 const Photos = () => {
-  const [folders, setFolders] = useState<string[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
-  let { path } = useRouteMatch();
+
+  const {
+    imageFolders
+  } = useSelector((state: AppState) => state.images);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!imageFolders) {
+      dispatch(getImageFolders());
+    }
+  }, [imageFolders, dispatch]);
+
+  const { path } = useRouteMatch();
 
   const onSetSidebarOpen = (open: boolean) => {
     setSidebarOpen(open);
@@ -20,13 +35,11 @@ const Photos = () => {
     history.push(`/photos/${folder}`);
   }
 
-  if (folders.length === 0) {
-    fetch(`/images/imageManifest.txt`)
-      .then((response) => response.text())
-      .then((response) => {
-        const folderNames = response.split(/\r?\n/);
-        setFolders(folderNames);
-      });
+  const getFolders = () => {
+    if (imageFolders) {
+      return imageFolders.map(imageFolder => imageFolder.folderName);
+    }
+    return [];
   }
 
   return (
@@ -41,7 +54,7 @@ const Photos = () => {
             </div>
             <div className="menu-item-container">
               {
-                folders.map(folder => {
+                getFolders().map(folder => {
                   return (
                     <div className="menu-item">
                       <button className="menu-button" onClick={() => handleMenuClick(`${folder}`)}>{`${folder}`}</button>
@@ -61,7 +74,7 @@ const Photos = () => {
         </button>
         <Switch>
           {
-            folders.map(folder => {
+            getFolders().map(folder => {
               return <Route path={`${path}/${folder}`} component={() => <PhotoGallery folder={`${folder}`} />} />
             })
           }

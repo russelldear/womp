@@ -18,17 +18,21 @@ const shufflePhotos = (photoArray: IPhoto[]) => {
   return photoArray;
 }
 
-export const getImageFolder = (folder: string): ThunkAction<void, AppState, unknown, Action<string>> => async dispatch => {
+export const getImageFolder = (): ThunkAction<void, AppState, unknown, Action<string>> => async dispatch => {
   try {
     const imageList: IPhoto[] = [];
 
-    const response = await fetch(`/images/${folder}/imageManifest.txt`);
+    const response = await fetch(`/images/imageManifest.txt`);
     const responseText = await response.text();
-
     const imageDetails = responseText.split(/\r?\n/);
 
+    const imageFolderList: IImageFolder[] = [];
+
     for (let i = 0; i < imageDetails.length; i++) {
-      const imageDetail = imageDetails[i].split(" ");
+      const imagePathSections = imageDetails[i].split("/");
+      const folder = imagePathSections[0];
+      const imageDetail = imagePathSections[1].split(" ");
+      
       if (imageDetail[0] && imageDetail[0].endsWith(".jpg")) {
         imageList.push({
           src: `/images/${folder}/${imageDetail[0]}`,
@@ -36,15 +40,15 @@ export const getImageFolder = (folder: string): ThunkAction<void, AppState, unkn
           height: parseInt(imageDetail[2])
         });
       }
+
+      imageFolderList.push({
+        folderName: folder,
+        imageList: shufflePhotos(imageList)
+      });
     }
 
-    const result: IImageFolder = {
-      folderName: folder,
-      imageList: shufflePhotos(imageList)
-    }
-
-    dispatch(getImageFolderSuccessful(result));
+    dispatch(getImageFolderSuccessful(imageFolderList));
   } catch {
-    console.log("Image folder retrieval failure: ", folder);
+    console.log("Image folder retrieval failure");
   }
 };
