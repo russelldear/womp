@@ -4,9 +4,10 @@ import { useRouteMatch, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from './redux/rootReducer';
 import Sidebar from "react-sidebar";
-import { getImageFolder as getImageFolders } from './redux/imagesActions';
+import { getImageFolders } from './redux/imagesActions';
 import PhotoGallery from "./PhotoGallery"
 import './App.css';
+import { IImageFolder } from "./types";
 
 const Photos = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
@@ -18,7 +19,7 @@ const Photos = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!imageFolders) {
+    if (!imageFolders || !imageFolders.length) {
       dispatch(getImageFolders());
     }
   }, [imageFolders, dispatch]);
@@ -28,6 +29,7 @@ const Photos = () => {
   const onSetSidebarOpen = (open: boolean) => {
     setSidebarOpen(open);
   }
+
   const history = useHistory();
 
   const handleMenuClick = (folder: string) => {
@@ -38,6 +40,17 @@ const Photos = () => {
   const getFolders = () => {
     if (imageFolders) {
       return imageFolders.map(imageFolder => imageFolder.folderName);
+    }
+    return [];
+  }
+
+  const getImages = (folder?: string) => {
+    if (imageFolders) {
+      return imageFolders.flatMap((imageFolder: IImageFolder) => {
+        return (folder === imageFolder.folderName || !folder) 
+          ? imageFolder.imageList 
+          : [];
+      });
     }
     return [];
   }
@@ -56,8 +69,8 @@ const Photos = () => {
               {
                 getFolders().map(folder => {
                   return (
-                    <div className="menu-item">
-                      <button className="menu-button" onClick={() => handleMenuClick(`${folder}`)}>{`${folder}`}</button>
+                    <div className="menu-item" key={folder}>
+                      <button className="menu-button" onClick={() => handleMenuClick(folder)}>{folder}</button>
                     </div>
                   )
                 })
@@ -73,9 +86,10 @@ const Photos = () => {
           <i className="material-icons md-light md-36">menu</i>
         </button>
         <Switch>
+          <Route key="root" exact path={path} component={() => <PhotoGallery images={getImages()} />} />
           {
             getFolders().map(folder => {
-              return <Route path={`${path}/${folder}`} component={() => <PhotoGallery folder={`${folder}`} />} />
+              return <Route key={folder} path={`${path}/${folder}`} component={() => <PhotoGallery images={getImages(folder)} />} />
             })
           }
         </Switch>
