@@ -1,15 +1,15 @@
-damn/Birchville Dam-1.jpg 
-damn/Birchville Dam-10.jpg 
-damn/Birchville Dam-11.jpg 
-damn/Birchville Dam-12.jpg 
-damn/Birchville Dam-2.jpg 
-damn/Birchville Dam-3.jpg 
-damn/Birchville Dam-4.jpg 
-damn/Birchville Dam-5.jpg 
-damn/Birchville Dam-6.jpg 
-damn/Birchville Dam-7.jpg 
-damn/Birchville Dam-8.jpg 
-damn/Birchville Dam-9.jpg 
+damn/BirchvilleDam-1.jpg 2048 1365
+damn/BirchvilleDam-10.jpg 1365 2048
+damn/BirchvilleDam-11.jpg 2048 2048
+damn/BirchvilleDam-12.jpg 1365 2048
+damn/BirchvilleDam-2.jpg 1463 2048
+damn/BirchvilleDam-3.jpg 2048 1365
+damn/BirchvilleDam-4.jpg 1463 2048
+damn/BirchvilleDam-5.jpg 2048 1365
+damn/BirchvilleDam-6.jpg 1365 2048
+damn/BirchvilleDam-7.jpg 1365 2048
+damn/BirchvilleDam-8.jpg 2048 2048
+damn/BirchvilleDam-9.jpg 1583 2048
 down south/SouthFinalCut-1.jpg 2048 1365
 down south/SouthFinalCut-10.jpg 1365 2048
 down south/SouthFinalCut-11.jpg 1365 2048
