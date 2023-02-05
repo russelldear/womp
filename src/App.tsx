@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router';
 import './App.css';
 import Landing from './Landing';
 import Photos from './Photos';
+import Hosted from './Hosted';
 import store from './redux/store';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={() => <Landing />} />
           <Route path="/photos" component={() => <Photos />} />
+          <Route path="/hosted" component={() => <Hosted />} />
           <Route path="*" component={() => <Landing />} />
         </Switch>
       </HashRouter>
